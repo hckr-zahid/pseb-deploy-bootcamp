@@ -1,198 +1,250 @@
 # SC-500 | Pakistan Software Export Board (PSEB)
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Program-PSEB%20DEPLOY-blue?style=for-the-badge" alt="PSEB DEPLOY">
-  <img src="https://img.shields.io/badge/Certification-SC--500-0078D4?style=for-the-badge" alt="SC-500">
-  <img src="https://img.shields.io/badge/Duration-3%20Months-success?style=for-the-badge" alt="Three Months">
-  <img src="https://img.shields.io/badge/Status-In%20Progress-orange?style=for-the-badge" alt="In Progress">
+  <img src="https://img.shields.io/badge/PROGRAM-PSEB%20DEPLOY-1F4B99?style=for-the-badge" alt="PSEB DEPLOY">
+  <img src="https://img.shields.io/badge/TRAINING-SC--500-0078D4?style=for-the-badge" alt="SC-500">
+  <img src="https://img.shields.io/badge/DURATION-3%20MONTHS-444444?style=for-the-badge" alt="Three Months">
+  <img src="https://img.shields.io/badge/STATUS-IN%20PROGRESS-D97706?style=for-the-badge" alt="In Progress">
 </p>
 
 <p align="center">
-  <b>Learn • Practice • Document • Build • Improve</b>
+  <strong>Cybersecurity Training, Practical Labs, Technical Reports & Projects</strong>
 </p>
 
-Welcome to my **three-month cybersecurity learning journey**, documented through practical labs, technical reports, projects, research, and hands-on exercises.
-
-This repository serves as my central portfolio for the **SC-500 Certification course**, undertaken under the **PSEB DEPLOY AI BootCamps Initiative**.
-
-My objective is to develop practical cybersecurity knowledge, strengthen technical problem-solving skills, and build a well-documented portfolio demonstrating what I learn throughout the program.
-
----
-
-## 📌 Program Overview
-
-| Detail | Information |
-|---|---|
-| Program | PSEB DEPLOY AI BootCamps Initiative |
-| Certification Track | SC-500 |
-| Learning Duration | 3 Months |
-| Repository Type | Learning Portfolio & Practical Documentation |
-| Primary Focus | Cybersecurity |
-| Learning Approach | Hands-on Labs, Reports, Projects & Research |
-| Current Status | In Progress |
-
-**Program Reference:** [PSEB DEPLOY Bootcamp](https://github.com/hckr-zahid/pseb-deploy-bootcamp)
+<p align="center">
+  <a href="https://github.com/hckr-zahid/pseb-deploy-bootcamp">PSEB DEPLOY BootCamp Repository</a>
+  &nbsp;|&nbsp;
+  <a href="https://nvd.nist.gov/">National Vulnerability Database</a>
+  &nbsp;|&nbsp;
+  <a href="https://www.first.org/cvss/">CVSS Documentation</a>
+</p>
 
 ---
 
-## 🎯 Learning Objectives
+## About This Repository
 
-Throughout this journey, I aim to:
+This repository documents my three-month training journey under the **SC-500 program**, conducted through the **Pakistan Software Export Board (PSEB) DEPLOY AI BootCamps Initiative**.
 
-- Develop a strong understanding of cybersecurity concepts and security practices.
-- Perform practical security assessments in controlled lab environments.
-- Understand network discovery, scanning, enumeration, and vulnerability assessment.
-- Identify security weaknesses and understand their potential impact.
-- Work with cybersecurity tools and document their results.
-- Understand vulnerability severity, risk assessment, and remediation.
-- Develop technical reporting and evidence-collection skills.
-- Complete practical projects that demonstrate applied knowledge.
-- Build a professional GitHub portfolio of my learning progress.
+It serves as a centralized technical record of the knowledge, practical exercises, security assessments, research activities, and projects completed throughout the training program.
+
+The repository is intended to demonstrate practical learning through structured documentation, reproducible lab work, technical analysis, and supporting evidence.
+
+The primary focus is to strengthen cybersecurity knowledge, develop hands-on technical skills, and apply security concepts through practical exercises and projects.
 
 ---
 
-## 🗂️ Repository Contents
+## Program Overview
 
-This repository will grow throughout the three-month program. It will contain learning materials and practical work organized into separate modules.
-
-| Directory | Purpose |
-|---|---|
-| `Labs/` | Hands-on cybersecurity exercises |
-| `Reports/` | Lab reports and technical documentation |
-| `Projects/` | Practical and independent projects |
-| `Research/` | Security research, case studies, and analysis |
-| `Scripts/` | Useful scripts and automation |
-| `Screenshots/` | Supporting screenshots and visual evidence |
-| `Resources/` | References, notes, and learning resources |
-
-*The structure may evolve as new course modules and projects are added.*
-
----
-
-## 📚 Learning Progress
-
-<details open>
-<summary><b>Phase 01 — Foundations & Practical Security Labs</b></summary>
-
-This phase focuses on understanding security fundamentals, working with lab environments, and developing practical assessment skills.
-
-| Module | Topic | Status |
-|---|---|---|
-| S06 | Network Scanning and Vulnerability Assessment | ✅ Completed |
-| Future Modules | Additional course labs and exercises | ⏳ Upcoming |
-
-</details>
-
-<details>
-<summary><b>Phase 02 — Advanced Practical Exercises</b></summary>
-
-Planned repository space for additional technical exercises, security analysis, and practical assignments as covered by the course.
-
-</details>
-
-<details>
-<summary><b>Phase 03 — Projects & Portfolio Development</b></summary>
-
-Planned repository space for larger practical projects, consolidated reports, research, and final learning outcomes.
-
-</details>
+<table>
+  <tr>
+    <td><strong>Program</strong></td>
+    <td>PSEB DEPLOY AI BootCamps Initiative</td>
+  </tr>
+  <tr>
+    <td><strong>Organization</strong></td>
+    <td>Pakistan Software Export Board (PSEB)</td>
+  </tr>
+  <tr>
+    <td><strong>Training Track</strong></td>
+    <td>SC-500</td>
+  </tr>
+  <tr>
+    <td><strong>Duration</strong></td>
+    <td>Three Months</td>
+  </tr>
+  <tr>
+    <td><strong>Repository Type</strong></td>
+    <td>Technical Learning & Practical Documentation</td>
+  </tr>
+  <tr>
+    <td><strong>Primary Domain</strong></td>
+    <td>Cybersecurity</td>
+  </tr>
+  <tr>
+    <td><strong>Current Status</strong></td>
+    <td>In Progress</td>
+  </tr>
+</table>
 
 ---
 
-## 🧪 Completed Lab: S06 — Network Scanning and Vulnerability Assessment
+## Learning Objectives
 
-<kbd>LAB 01</kbd> <kbd>COMPLETED</kbd>
+Throughout this program, the focus is on developing practical capabilities in cybersecurity through structured learning and hands-on implementation.
 
-My first documented practical lab focuses on network discovery, service enumeration, vulnerability identification, and security assessment.
+Key objectives include:
 
-**Lab environment:**
+- Understand cybersecurity principles, concepts, and security practices.
+- Perform network discovery, scanning, enumeration, and vulnerability assessments.
+- Identify security weaknesses and evaluate their potential impact.
+- Work with industry-relevant cybersecurity tools and technologies.
+- Understand vulnerability classification, CVSS scoring, and risk assessment.
+- Analyze security configurations and common vulnerabilities.
+- Develop technical documentation and professional security reports.
+- Perform practical exercises in controlled and authorized lab environments.
+- Build projects that demonstrate the application of learned concepts.
+
+---
+
+## Training Progress
+
+The repository is organized by individual training sessions. Each session has its own documentation, scripts, and supporting evidence.
+
+<table>
+  <thead>
+    <tr>
+      <th>Session</th>
+      <th>Topic</th>
+      <th>Status</th>
+      <th>Documentation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S01</td>
+      <td>To be updated</td>
+      <td>Pending</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>S02</td>
+      <td>To be updated</td>
+      <td>Pending</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>S03</td>
+      <td>To be updated</td>
+      <td>Pending</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>S04</td>
+      <td>To be updated</td>
+      <td>Pending</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>S05</td>
+      <td>To be updated</td>
+      <td>Pending</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>S06</td>
+      <td>Network Scanning and Vulnerability Assessment</td>
+      <td><strong>Completed</strong></td>
+      <td><a href="s06/README.md">View Session</a></td>
+    </tr>
+    <tr>
+      <td>S07 onwards</td>
+      <td>To be updated</td>
+      <td>Upcoming</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+*Session topics and progress will be updated as the training continues.*
+
+---
+
+## Completed Practical Work
+
+### S06 — Network Scanning and Vulnerability Assessment
+
+<p>
+  <img src="https://img.shields.io/badge/SESSION-S06-0078D4?style=flat-square" alt="Session S06">
+  <img src="https://img.shields.io/badge/STATUS-COMPLETED-238636?style=flat-square" alt="Completed">
+</p>
+
+The S06 practical lab focused on network discovery, service enumeration, vulnerability identification, and security assessment using Kali Linux and Metasploitable 2.
+
+#### Lab Environment
 
 | Machine | IP Address | Role |
 |---|---|---|
-| Kali Linux | `192.168.199.128` | Attacker / Assessment Machine |
+| Kali Linux | `192.168.199.128` | Assessment Machine |
 | Metasploitable 2 | `192.168.199.129` | Vulnerable Target |
 
-**Tools used:**
+#### Tools Used
+
 - Kali Linux
 - Nmap
-- FTP client
+- FTP Client
 - cURL
-- Terminal-based network utilities
+- Linux Terminal Utilities
 
-### Key Activities
+#### Key Activities
 
 1. Verified connectivity between the lab machines.
 2. Performed network scanning using Nmap.
-3. Identified running services and their versions.
+3. Identified running services and service versions.
 4. Investigated the vsftpd 2.3.4 backdoor vulnerability.
 5. Examined PHP information disclosure.
 6. Tested anonymous FTP authentication.
-7. Documented findings and supporting evidence.
+7. Collected screenshots, logs, and scan outputs.
 8. Researched CVSS scoring and the historical vsftpd supply-chain incident.
 
-### Security Findings
+#### Security Findings
 
-| Finding | Description | Assessment |
+| Finding | Description | Preliminary Assessment |
 |---|---|---|
-| vsftpd 2.3.4 Backdoor | Nmap detection of the known backdoor vulnerability (CVE-2011-2523) | Critical |
+| vsftpd 2.3.4 Backdoor | Detection of the known backdoor vulnerability, CVE-2011-2523 | Critical |
 | PHP Information Disclosure | Publicly accessible PHP information page exposing configuration details | Medium |
 | Anonymous FTP Access | Anonymous FTP authentication accepted by the target | Security Misconfiguration |
 
-**Important:** Severity labels are preliminary lab assessments. The actual risk depends on the affected system, exposure, and business context.
+*Severity labels are preliminary lab assessments. Actual risk depends on system exposure, business context, and the security impact.*
 
-### Evidence Preview
+#### Evidence
 
-**1. Initial Nmap Scan**
+**Initial Network Scan**
 
-![Initial Nmap Scan](evidence/initial-nmap-scan.png)
+<p align="center">
+  <img src="s06/evidence/initial-nmap-scan.png" alt="Initial Nmap Scan" width="90%">
+</p>
 
-**2. vsftpd Backdoor Detection**
+**vsftpd Backdoor Detection**
 
-![vsftpd Backdoor Detection](evidence/vsftpd-backdoor.png)
+<p align="center">
+  <img src="s06/evidence/vsftpd-backdoor.png" alt="vsftpd Backdoor Detection" width="90%">
+</p>
 
-**3. PHP Information Disclosure**
+**PHP Information Disclosure**
 
-![PHP Information Disclosure](evidence/phpinfo-page.png)
+<p align="center">
+  <img src="s06/evidence/phpinfo-page.png" alt="PHP Information Disclosure" width="90%">
+</p>
 
-**4. Anonymous FTP Authentication**
+**Anonymous FTP Authentication**
 
-![Anonymous FTP Authentication](evidence/anonymous-ftp.png)
+<p align="center">
+  <img src="s06/evidence/anonymous-ftp.png" alt="Anonymous FTP Authentication" width="90%">
+</p>
 
-### Additional Lab Documentation
+#### Additional Documentation
 
-- [Initial Nmap Results](evidence/initial-nmap.nmap)
-- [Nmap XML Output](evidence/initial-nmap.xml)
-- [Nmap Grepable Output](evidence/initial-nmap.gnmap)
-- [vsftpd Backdoor Check](evidence/vsftpd-backdoor-check.txt)
-- [PHP Response Headers](evidence/phpinfo-headers.txt)
-- [PHP Information Page HTML](evidence/phpinfo.html)
-- [Anonymous FTP Session](evidence/anonymous-ftp-session.txt)
-- [CVSS Analysis — Task B3](evidence/task-b3-cvss-notes.md)
-- [vsftpd Supply-Chain Research — Task B6](evidence/task-b6-vsftpd-supply-chain.md)
-
-All testing was performed against the intentionally vulnerable Metasploitable 2 machine in an isolated lab environment.
-
----
-
-## 🧰 Tools & Technologies
-
-Tools used or planned for practical learning, depending on the course modules:
-
-| Category | Tools |
+| Evidence File | Description |
 |---|---|
-| Operating Systems | Kali Linux, Linux |
-| Network Scanning | Nmap |
-| Network Utilities | Ping, FTP, cURL |
-| Vulnerability Assessment | Nmap NSE and related assessment tools |
-| Documentation | Markdown, Git, GitHub |
-| Virtualization | VirtualBox / VMware |
-| Security Research | CVE, CVSS, NVD |
+| [Initial Nmap Results](s06/evidence/initial-nmap.nmap) | Human-readable scan results |
+| [Nmap XML Output](s06/evidence/initial-nmap.xml) | Structured scan output |
+| [Nmap Grepable Output](s06/evidence/initial-nmap.gnmap) | Grepable scan output |
+| [vsftpd Backdoor Check](s06/evidence/vsftpd-backdoor-check.txt) | Vulnerability detection output |
+| [PHP Response Headers](s06/evidence/phpinfo-headers.txt) | HTTP response headers |
+| [PHP Information Page](s06/evidence/phpinfo.html) | Captured PHP information page |
+| [Anonymous FTP Session](s06/evidence/anonymous-ftp-session.txt) | FTP authentication and session evidence |
+| [CVSS Analysis — Task B3](s06/evidence/task-b3-cvss-notes.md) | Vulnerability severity analysis |
+| [vsftpd Supply-Chain Research — Task B6](s06/evidence/task-b6-vsftpd-supply-chain.md) | Historical supply-chain incident research |
 
-This list will be updated as I work with additional tools.
+All S06 testing was performed against an intentionally vulnerable Metasploitable 2 machine in an isolated lab environment.
+
+<a href="s06/README.md"><strong>View Complete S06 Lab Documentation</strong></a>
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
+
+Each training session follows a consistent directory structure to keep documentation, scripts, and evidence organized.
 
 ```text
 pseb-deploy-bootcamp/
@@ -232,61 +284,121 @@ pseb-deploy-bootcamp/
 └── ...
 ```
 
-The S06 evidence currently exists in the `evidence/` directory alongside this repository's main README. As the repository grows, I may organize individual labs into their own folders.
+### Directory Guidelines
+
+| Directory / File | Purpose |
+|---|---|
+| `Scripts/` | Scripts, commands, configuration files, and automation developed during the session |
+| `README.md` | Session overview, objectives, methodology, findings, and conclusion |
+| `evidence/` | Screenshots, logs, scan outputs, reports, and supporting evidence |
+
+This structure will be repeated for each session throughout the training program.
 
 ---
 
-## 📝 Documentation Standards
+## Tools & Technologies
 
-To keep this portfolio consistent and easy to review, each practical lab or project will aim to include:
+The following tools and technologies are used or may be introduced during practical exercises, depending on the course content.
 
-- **Objective:** What the exercise is intended to achieve.
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Tools & Technologies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Operating Systems</td>
+      <td>Kali Linux, Linux</td>
+    </tr>
+    <tr>
+      <td>Network Scanning</td>
+      <td>Nmap</td>
+    </tr>
+    <tr>
+      <td>Network Utilities</td>
+      <td>Ping, FTP, cURL</td>
+    </tr>
+    <tr>
+      <td>Vulnerability Assessment</td>
+      <td>Nmap NSE and related assessment tools</td>
+    </tr>
+    <tr>
+      <td>Virtualization</td>
+      <td>VirtualBox, VMware</td>
+    </tr>
+    <tr>
+      <td>Documentation & Version Control</td>
+      <td>Markdown, Git, GitHub</td>
+    </tr>
+    <tr>
+      <td>Security Research</td>
+      <td>CVE, CVSS, NVD</td>
+    </tr>
+  </tbody>
+</table>
+
+The tools list will be expanded as additional technologies are introduced and used.
+
+---
+
+## Documentation Standards
+
+Each session will follow a consistent documentation approach to ensure clarity, reproducibility, and professional presentation.
+
+Where applicable, session documentation will include:
+
+- **Objectives:** Purpose and expected learning outcomes.
 - **Environment:** Systems, tools, and configurations used.
-- **Methodology:** Steps followed during the exercise.
-- **Commands:** Relevant commands and configurations.
-- **Findings:** Observations and identified security issues.
-- **Evidence:** Screenshots, logs, and output files.
-- **Analysis:** Technical explanation and risk assessment.
-- **Recommendations:** Appropriate mitigation or remediation steps.
-- **References:** Official documentation and reliable sources.
+- **Methodology:** Steps and procedures followed.
+- **Scripts and Commands:** Relevant commands, scripts, and configurations.
+- **Findings:** Observed results and identified security issues.
+- **Evidence:** Screenshots, logs, and supporting files.
+- **Analysis:** Technical explanations and risk assessments.
+- **Recommendations:** Suggested mitigation and remediation measures.
+- **References:** Official documentation and reliable technical sources.
 
 ---
 
-## 🔐 Responsible Use & Disclaimer
+## Responsible Use & Disclaimer
 
-All security testing and practical exercises documented in this repository are intended for **educational purposes and authorized environments only**.
+All security testing and practical exercises documented in this repository are conducted for educational purposes in authorized environments.
 
-- Testing is performed on systems I own or have explicit permission to assess.
-- Vulnerable machines are used in isolated lab environments.
+- Testing is limited to systems owned by me or systems for which explicit authorization has been granted.
+- Vulnerable machines are used in isolated laboratory environments.
 - No unauthorized access or testing against third-party systems is intended.
-- Security findings are documented for learning, analysis, and defensive improvement.
+- Security findings are documented for educational analysis and defensive improvement.
 
-**Please do not use the techniques documented here against systems without proper authorization.**
-
----
-
-## 📈 Learning Journey
-
-This repository will be updated throughout the three-month course as I complete new labs, assignments, reports, and projects.
-
-My goal is not simply to complete exercises, but to understand the underlying concepts, document the process, analyze the results, and build practical skills.
-
-<p align="center">
-  <b>Every Lab Is a Lesson. Every Project Is Progress.</b>
-</p>
+The information and techniques documented here must not be used against systems without proper authorization.
 
 ---
 
-## 🔗 Useful Links
+## Learning Journey
 
-- [PSEB DEPLOY Bootcamp Repository](https://github.com/hckr-zahid/pseb-deploy-bootcamp)
-- [National Vulnerability Database (NVD)](https://nvd.nist.gov/)
+This repository will be continuously updated throughout the three-month training program.
+
+Each session will contribute to a growing collection of practical exercises, scripts, technical reports, security research, and projects.
+
+The objective is to build a structured record of practical cybersecurity experience and demonstrate the ability to understand, investigate, document, and analyze security challenges.
+
+---
+
+## References & Learning Resources
+
+- [PSEB DEPLOY BootCamp Repository](https://github.com/hckr-zahid/pseb-deploy-bootcamp)
+- [Pakistan Software Export Board](https://pseb.org.pk/)
+- [National Vulnerability Database](https://nvd.nist.gov/)
 - [Nmap Official Documentation](https://nmap.org/book/man.html)
 - [FIRST CVSS Documentation](https://www.first.org/cvss/)
-- [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/)
+- [GitHub Markdown Documentation](https://docs.github.com/en/get-started/writing-on-github)
 
 ---
 
 <p align="center">
-  <i>Documenting my journey from learning cybersecurity concepts to applying them through practical projects.</i>
+  <strong>SC-500 | Pakistan Software Export Board</strong>
+  <br>
+  <span>Cybersecurity Training & Practical Documentation</span>
+  <br><br>
+  <sub>Learning through practice. Building through projects. Improving through documentation.</sub>
 </p>
