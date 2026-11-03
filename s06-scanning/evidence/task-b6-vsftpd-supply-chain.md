@@ -1,4 +1,4 @@
-## Task B6 — vsftpd Supply-Chain Compromise
+## Task B6: vsftpd Supply-Chain Compromise
 
 ### What happened?
 
