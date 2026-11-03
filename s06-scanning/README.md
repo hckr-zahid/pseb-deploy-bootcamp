@@ -1,4 +1,4 @@
-# 🔍 S06 — Network Scanning & Vulnerability Assessment
+# S06: Network Scanning & Vulnerability Assessment
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Kali%20Linux-blue?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Kali Linux">
@@ -13,31 +13,31 @@
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 
 1. [Project Overview](#-project-overview)
 2. [Lab Environment](#-lab-environment)
 3. [Host Discovery and Connectivity](#1-host-discovery-and-connectivity)
 4. [Initial Nmap Scan](#2-initial-nmap-scan-and-service-enumeration)
-5. [Task A — Vulnerability Findings](#3-task-a--vulnerability-findings)
-   - [Finding 01 — vsftpd Backdoor](#finding-01--vsftpd-234-backdoor)
-   - [Finding 02 — PHP Information Disclosure](#finding-02--php-information-disclosure)
-   - [Finding 03 — Anonymous FTP Access](#finding-03--anonymous-ftp-access)
-6. [Task B3 — CVSS Metric Decoding](#4-task-b3--cvss-metric-decoding)
-7. [Task B6 — Supply-Chain Compromise](#5-task-b6--vsftpd-supply-chain-compromise)
+5. [Task A: Vulnerability Findings](#3-task-a--vulnerability-findings)
+   - [Finding 01: vsftpd Backdoor](#finding-01--vsftpd-234-backdoor)
+   - [Finding 02: PHP Information Disclosure](#finding-02--php-information-disclosure)
+   - [Finding 03: Anonymous FTP Access](#finding-03--anonymous-ftp-access)
+6. [Task B3: CVSS Metric Decoding](#4-task-b3--cvss-metric-decoding)
+7. [Task B6: Supply-Chain Compromise](#5-task-b6--vsftpd-supply-chain-compromise)
 8. [Conclusion](#-conclusion)
 9. [Evidence Repository](#-evidence-repository)
 10. [Repository Structure](#-repository-structure)
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 
 This project documents a practical network scanning and vulnerability assessment exercise performed using **Kali Linux** against an intentionally vulnerable **Metasploitable 2** virtual machine.
 
 The purpose of this lab was to understand how attackers and security professionals perform network reconnaissance, identify open ports, enumerate running services, and investigate potential security weaknesses.
 
-### 🎯 Lab Objectives
+### Lab Objectives
 
 - Verify connectivity between the attacker and target machines.
 - Discover open ports and running services using Nmap.
@@ -109,7 +109,7 @@ sudo nmap -sC -sV -oA evidence/initial-nmap 192.168.199.129
 
 The scan identified multiple exposed services on the target machine.
 
-### 🔎 Important Scan Results
+###  Important Scan Results
 
 | Port | State | Service | Detected Version / Information |
 |---|---|---|---|
@@ -130,13 +130,13 @@ The scan identified multiple exposed services on the target machine.
 
 Additional services were also identified during the scan.
 
-### 📸 Initial Nmap Scan Evidence
+###Initial Nmap Scan Evidence
 
 ![Initial Nmap Scan](evidence/initial-nmap-scan.png)
 
 *Figure 1: Initial Nmap scan showing open ports and detected services.*
 
-### 📂 Saved Nmap Outputs
+### Saved Nmap Outputs
 
 The scan results were saved in three formats:
 
@@ -146,13 +146,13 @@ The scan results were saved in three formats:
 
 ---
 
-# 3. Task A — Vulnerability Findings
+# 3. Task A: Vulnerability Findings
 
 Three security findings were investigated using the initial scan results and additional service checks.
 
 ---
 
-## Finding 01 — vsftpd 2.3.4 Backdoor
+## Finding 01: vsftpd 2.3.4 Backdoor
 
 <kbd>CRITICAL</kbd> `CVE-2011-2523`
 
@@ -213,7 +213,7 @@ If present on a real system, unauthenticated remote command execution with root 
 - Restrict FTP exposure where it is not required.
 - Monitor exposed services for suspicious activity.
 
-### 📸 vsftpd Backdoor Evidence
+### vsftpd Backdoor Evidence
 
 ![vsftpd Backdoor Detection](evidence/vsftpd-backdoor.png)
 
@@ -223,7 +223,7 @@ If present on a real system, unauthenticated remote command execution with root 
 
 ---
 
-## Finding 02 — PHP Information Disclosure
+## Finding 02: PHP Information Disclosure
 
 <kbd>MEDIUM</kbd> Publicly Accessible Configuration Information
 
@@ -289,7 +289,7 @@ This test confirms information disclosure; it does not, by itself, demonstrate c
 
 ---
 
-## Finding 03 — Anonymous FTP Access
+## Finding 03: Anonymous FTP Access
 
 <kbd>MEDIUM</kbd> Anonymous Authentication Enabled
 
@@ -428,13 +428,13 @@ The two versions use different metric systems, so their scores should not be tre
 
 ### References
 
-- [NIST National Vulnerability Database — CVE-2011-2523](https://nvd.nist.gov/vuln/detail/CVE-2011-2523)
-- [FIRST — CVSS v3.1 Specification](https://www.first.org/cvss/v3.1/specification-document)
-- [FIRST — CVSS v2 Guide](https://www.first.org/cvss/v2/guide)
+- [NIST National Vulnerability Database: CVE-2011-2523](https://nvd.nist.gov/vuln/detail/CVE-2011-2523)
+- [FIRST: CVSS v3.1 Specification](https://www.first.org/cvss/v3.1/specification-document)
+- [FIRST: CVSS v2 Guide](https://www.first.org/cvss/v2/guide)
 
 ---
 
-# 5. Task B6 — vsftpd Supply-Chain Compromise
+# 5. Task B6: vsftpd Supply-Chain Compromise
 
 ## What Happened?
 
@@ -481,7 +481,7 @@ Modern software projects depend on external packages, repositories, build system
 
 ### Supporting Notes
 
-[📄 View Task B6 Supply-Chain Research](evidence/task-b6-vsftpd-supply-chain.md)
+[View Task B6 Supply-Chain Research](evidence/task-b6-vsftpd-supply-chain.md)
 
 ---
 
@@ -504,7 +504,7 @@ The practical results highlight the importance of reducing exposed services, res
 
 ---
 
-## 📂 Evidence Repository
+## Evidence Repository
 
 All screenshots, scan outputs, command results, and supporting research notes are stored in the `evidence/` directory.
 
@@ -526,7 +526,7 @@ All screenshots, scan outputs, command results, and supporting research notes ar
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```text
 pseb-deploy-bootcamp/
