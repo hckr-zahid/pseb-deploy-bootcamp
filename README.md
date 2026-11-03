@@ -134,7 +134,7 @@ The repository is organized by individual training sessions. Each session has it
       <td>S06</td>
       <td>Network Scanning and Vulnerability Assessment</td>
       <td><strong>Completed</strong></td>
-      <td><a href="s06/README.md">View Session</a></td>
+      <td><a href="s06-scanning/README.md">View Session</a></td>
     </tr>
     <tr>
       <td>S07 onwards</td>
@@ -201,44 +201,44 @@ The S06 practical lab focused on network discovery, service enumeration, vulnera
 **Initial Network Scan**
 
 <p align="center">
-  <img src="s06/evidence/initial-nmap-scan.png" alt="Initial Nmap Scan" width="90%">
+  <img src="s06-scanning/evidence/initial-nmap-scan.png" alt="Initial Nmap Scan" width="90%">
 </p>
 
 **vsftpd Backdoor Detection**
 
 <p align="center">
-  <img src="s06/evidence/vsftpd-backdoor.png" alt="vsftpd Backdoor Detection" width="90%">
+  <img src="s06-scanning/evidence/vsftpd-backdoor.png" alt="vsftpd Backdoor Detection" width="90%">
 </p>
 
 **PHP Information Disclosure**
 
 <p align="center">
-  <img src="s06/evidence/phpinfo-page.png" alt="PHP Information Disclosure" width="90%">
+  <img src="s06-scanning/evidence/phpinfo-page.png" alt="PHP Information Disclosure" width="90%">
 </p>
 
 **Anonymous FTP Authentication**
 
 <p align="center">
-  <img src="s06/evidence/anonymous-ftp.png" alt="Anonymous FTP Authentication" width="90%">
+  <img src="s06-scanning/evidence/anonymous-ftp.png" alt="Anonymous FTP Authentication" width="90%">
 </p>
 
 #### Additional Documentation
 
 | Evidence File | Description |
 |---|---|
-| [Initial Nmap Results](s06/evidence/initial-nmap.nmap) | Human-readable scan results |
-| [Nmap XML Output](s06/evidence/initial-nmap.xml) | Structured scan output |
-| [Nmap Grepable Output](s06/evidence/initial-nmap.gnmap) | Grepable scan output |
-| [vsftpd Backdoor Check](s06/evidence/vsftpd-backdoor-check.txt) | Vulnerability detection output |
-| [PHP Response Headers](s06/evidence/phpinfo-headers.txt) | HTTP response headers |
-| [PHP Information Page](s06/evidence/phpinfo.html) | Captured PHP information page |
-| [Anonymous FTP Session](s06/evidence/anonymous-ftp-session.txt) | FTP authentication and session evidence |
-| [CVSS Analysis — Task B3](s06/evidence/task-b3-cvss-notes.md) | Vulnerability severity analysis |
-| [vsftpd Supply-Chain Research — Task B6](s06/evidence/task-b6-vsftpd-supply-chain.md) | Historical supply-chain incident research |
+| [Initial Nmap Results](s06-scanning/evidence/initial-nmap.nmap) | Human-readable scan results |
+| [Nmap XML Output](s06-scanning/evidence/initial-nmap.xml) | Structured scan output |
+| [Nmap Grepable Output](s06-scanning/evidence/initial-nmap.gnmap) | Grepable scan output |
+| [vsftpd Backdoor Check](s06-scanning/evidence/vsftpd-backdoor-check.txt) | Vulnerability detection output |
+| [PHP Response Headers](s06-scanning/evidence/phpinfo-headers.txt) | HTTP response headers |
+| [PHP Information Page](s06-scanning/evidence/phpinfo.html) | Captured PHP information page |
+| [Anonymous FTP Session](s06-scanning/evidence/anonymous-ftp-session.txt) | FTP authentication and session evidence |
+| [CVSS Analysis — Task B3](s06-scanning/evidence/task-b3-cvss-notes.md) | Vulnerability severity analysis |
+| [vsftpd Supply-Chain Research — Task B6](s06-scanning/evidence/task-b6-vsftpd-supply-chain.md) | Historical supply-chain incident research |
 
 All S06 testing was performed against an intentionally vulnerable Metasploitable 2 machine in an isolated lab environment.
 
-<a href="s06/README.md"><strong>View Complete S06 Lab Documentation</strong></a>
+<a href="s06-scanning/README.md"><strong>View Complete S06 Lab Documentation</strong></a>
 
 ---
 
