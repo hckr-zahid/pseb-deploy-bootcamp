@@ -17,9 +17,9 @@
 
 ## Table of Contents
 
-- [Task A — Malware Types and Real-World Examples](#task-a)
-- [Task B2 — Linux File Permissions](#task-b2)
-- [Task B3 — Caesar Cipher Decoder in Python](#task-b3)
+- [Task A: Malware Types and Real-World Examples](#task-a)
+- [Task B2: Linux File Permissions](#task-b2)
+- [Task B3: Caesar Cipher Decoder in Python](#task-b3)
 - [GitHub Repository Structure](#github-repository-structure)
 - [References](#references)
 
