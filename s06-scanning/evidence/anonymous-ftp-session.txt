@@ -1,0 +1,19 @@
+Script started on 2026-11-04 01:53:12+05:00 [COMMAND="ftp 192.168.199.129" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="95" LINES="42"]
+Connected to 192.168.199.129.
+220 (vsFTPd 2.3.4)
+Name (192.168.199.129:kali): any onymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> pwd
+Remote directory: /
+ftp> ls
+229 Entering Extended Passive Mode (|||42678|).
+150 Here comes the directory listing.
+226 Directory send OK.
+ftp> quit
+221 Goodbye.
+
+Script done on 2026-11-04 01:53:37+05:00 [COMMAND_EXIT_CODE="0"]
