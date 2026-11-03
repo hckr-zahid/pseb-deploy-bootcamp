@@ -1,7 +1,7 @@
-## Task B3 — CVSS Metric Decoding: CVE-2011-2523
+## Task B3: CVSS Metric Decoding: CVE-2011-2523
 
 ### Vulnerability
-**vsftpd 2.3.4 Backdoor — CVE-2011-2523**
+**vsftpd 2.3.4 Backdoor: CVE-2011-2523**
 
 ### CVSS 3.1 Vector
 
