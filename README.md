@@ -1,4 +1,4 @@
-# SC-500 | Security Operations & Cybersecurity Learning Portfolio
+# SC-500 | Pakistan Software Export Board (PSEB)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Program-PSEB%20DEPLOY-blue?style=for-the-badge" alt="PSEB DEPLOY">
