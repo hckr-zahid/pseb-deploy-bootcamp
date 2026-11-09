@@ -1,0 +1,36 @@
+=============================================================================
+DAY 4 (S08) - NETWORK CONNECTIVITY AND LAB ROUTING VERIFICATION
+=============================================================================
+Date: 2026-11-09
+Attacker Host: Kali Linux (10.50.20.10) [Offensive Zone - VMnet3]
+Target Host:   Windows 10 VM (10.50.10.21) [Enterprise LAN - VMnet2]
+Router/GW:     pfSense 2.6.0 (10.50.10.1 / 10.50.20.1)
+
+1. Windows 10 Target -> Kali Attacker Outbound Reachability Test:
+-----------------------------------------------------------------------------
+PS C:\Users\Administrator> ipconfig
+
+Windows IP Configuration
+Ethernet adapter Ethernet0:
+   IPv4 Address. . . . . . . . . . . : 10.50.10.21
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 10.50.10.1
+
+PS C:\Users\Administrator> ping 10.50.20.10
+Pinging 10.50.20.10 with 32 bytes of data:
+Reply from 10.50.20.10: bytes=32 time<1ms TTL=63
+Reply from 10.50.20.10: bytes=32 time=1ms TTL=63
+Reply from 10.50.20.10: bytes=32 time=2ms TTL=63
+Reply from 10.50.20.10: bytes=32 time<1ms TTL=63
+
+Ping statistics for 10.50.20.10:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+    Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 2ms, Average = 0ms
+
+2. Technical Observation:
+-----------------------------------------------------------------------------
+- Outbound network egress from Enterprise LAN (10.50.10.21) to Offensive Zone (10.50.20.10) is fully functional.
+- TTL=63 confirms inter-VLAN routing through pfSense (single hop decrement from default TTL=64).
+- Inbound ICMP dropped on Windows 10 due to default Windows Firewall rules, which aligns with standard enterprise endpoint posture.
+- Because client-side exploitation leverages Reverse TCP connections initiated by the victim outbound, full end-to-end payload staging is viable.

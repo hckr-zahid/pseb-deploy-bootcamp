@@ -1,0 +1,39 @@
+================================================================================
+METERPRETER POST-EXPLOITATION TRIAGE & PRIVILEGE ELEVATION LOG
+Date/Time: 2026-11-09 15:58:00 +0500
+Target Host: WIN10VM (10.50.10.21)
+Attacker Host: Kali Linux (10.50.20.10)
+Session: Meterpreter Session 1 (10.50.20.10:4433 -> 10.50.10.21:55037)
+================================================================================
+
+meterpreter > getuid
+Server username: SEC\Administrator
+
+meterpreter > getsystem
+...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).
+
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+
+================================================================================
+TECHNICAL ANALYSIS: NAMED PIPE IMPERSONATION (TECHNIQUE 1)
+================================================================================
+Mechanism:
+1. Process context: The payload was running under the domain administrator context
+   (SEC\Administrator), granting it administrative rights and SeImpersonatePrivilege.
+2. Named Pipe Creation: Meterpreter creates a local named pipe (e.g., \\.\pipe\...).
+3. Child Service Trigger: Meterpreter installs/spawns a temporary Windows service 
+   configured to run as NT AUTHORITY\SYSTEM.
+4. Connection: The SYSTEM service connects to the attacker's named pipe.
+5. Impersonation: Meterpreter invokes the Windows API ImpersonateNamedPipeClient(), 
+   allowing the thread to duplicate the client's SYSTEM access token and assume 
+   full NT AUTHORITY\SYSTEM security context.
+
+Defensive Controls & Detection:
+- Event ID 7045 (A new service was installed in the system)
+- Event ID 4688 / Sysmon Event ID 1 (Process creation)
+- Sysmon Event ID 17/18 (Pipe Created / Pipe Connected)
+- Hardening: Restrict SeImpersonatePrivilege via User Rights Assignment, enable 
+  Credential Guard, enforce strict UAC AlwaysNotify, and implement EDR behavioral 
+  rules blocking anomalous named pipe impersonation patterns.
+================================================================================
