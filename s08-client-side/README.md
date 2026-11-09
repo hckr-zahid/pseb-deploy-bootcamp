@@ -334,6 +334,7 @@ All empirical evidence, logs, and visual captures are indexed and accessible in 
 | `05_task_manager_execution.png` | Visual Capture | Windows Task Manager confirming active execution of win (32-bit). |
 | `06_meterpreter_session_established.png`| Visual Capture | Metasploit console logging 203,451-byte stage delivery and Session 1 opened on port 4444. |
 | `07_privilege_elevation_system.png / .txt` | Visual / Log | Verification of SEC\Administrator session and elevation to NT AUTHORITY\SYSTEM via Named Pipe Impersonation. |
+| `12_privilege_escalation_system_confirmed.png` | Visual Capture | Final terminal verification confirming user identity as `NT AUTHORITY\SYSTEM`. |
 
 ---
 
