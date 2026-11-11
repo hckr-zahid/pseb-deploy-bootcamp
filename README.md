@@ -293,7 +293,13 @@ The repository is organized by individual training sessions. Each session has it
       <td><a href="s08-client-side/README.md">View Session</a></td>
     </tr>
     <tr>
-      <td>S09 onwards</td>
+      <td>S09</td>
+      <td>Web Application Pentesting & Reconnaissance</td>
+      <td><strong>Completed</strong></td>
+      <td><a href="s09-web-pentest/README.md">View Session</a></td>
+    </tr>
+    <tr>
+      <td>S10 onwards</td>
       <td>To be updated</td>
       <td>Upcoming</td>
       <td>—</td>
@@ -631,6 +637,34 @@ The S08 practical laboratory focused on client-side offensive security, malware 
 6. **Career Statement & 90-Day Roadmap:** Professional pathway targeting SOC Analyst / Junior Penetration Tester roles with CompTIA Security+, BTL1, PNPT, and 3 open-source GitHub projects.
 
 <a href="s08-client-side/README.md"><strong>View Complete S08 Lab Documentation</strong></a> | <a href="s08-client-side/S08_Client_Side_Attacks_Report.pdf"><strong>Download Formal Report (PDF)</strong></a> | <a href="s08-client-side/S08_Client_Side_Attacks_Report.docx"><strong>Download Formal Report (DOCX)</strong></a>
+
+---
+
+### S09 — Web Application Penetration Testing & Reconnaissance
+
+<p>
+  <img src="https://img.shields.io/badge/SESSION-S09-0078D4?style=flat-square" alt="Session S09">
+  <img src="https://img.shields.io/badge/STATUS-COMPLETED-238636?style=flat-square" alt="Completed">
+  <img src="https://img.shields.io/badge/DELIVERABLE-DOCX%20%26%20PDF%20REPORT-B91C1C?style=flat-square" alt="DOCX and PDF Report">
+</p>
+
+The S09 practical assessment executed web application penetration testing and multi-source reconnaissance against the production enterprise surface `nuexus.com` (`*.nuexus.com`), covering the four graded mandates from the Day 5 curriculum.
+
+#### Target & Assessment Environment
+| Component | Asset / Domain | Purpose & Role |
+|---|---|---|
+| Target Production Surface | `*.nuexus.com` | Enterprise target domain (Next.js, Vercel, Cloudflare WAF/CDN) |
+| Kali Linux 2026.3 | Offensive Operator | Subdomain recon, Google dorking, HTTP probe resolution, OWASP ZAP |
+| Burp Suite Pro / CE | Web Proxy & Scanner | Manual session modeling, HTTP/2 inspection, Repeater verb tampering |
+| OWASP ZAP (Checkmarx) | Automated DAST Scanner | Headless Firefox AJAX spidering, DOM taint-flow sink analysis (47 alerts) |
+
+#### Core Objectives & Assessment Areas
+1. **Task 1 — Scope & Rules of Engagement (25%):** Legal boundary definition for `*.nuexus.com`, testing windows, emergency contacts, explicit exclusions, and mandatory Break-Glass verification for wildcard assets.
+2. **Task 2 — Google Dorking Vulnerability Assessment (25%):** Execution of 6 specialized search queries discovering exposed corporate emails, 5+ indexed proprietary technical playbooks, and subdomain leakage (`app.nuexus.com`).
+3. **Task 3 — Multi-Engine Subdomain Reconnaissance (25%):** Triangulated discovery across `subfinder` (24 hosts), `assetfinder` (7 hosts), and `theHarvester` (20 hosts), reconciled and actively resolved with `httpx-toolkit` (identifying HTTP 200, 308, and HTTP 526 origin SSL errors).
+4. **Task 4 — Automated Web Scanner Comparative Analysis (25%):** Comprehensive benchmark of Burp Suite (12 passive issues, API routing, CORS wildcard `*`) vs. OWASP ZAP (47 alerts, 6 High DOM XSS via headless browser crawling).
+
+<a href="s09-web-pentest/README.md"><strong>View Complete S09 Lab Documentation</strong></a> | <a href="s09-web-pentest/S09_Web_Pentest_Recon_Report.pdf"><strong>Download Formal Report (PDF)</strong></a> | <a href="s09-web-pentest/S09_Web_Pentest_Recon_Report.docx"><strong>Download Formal Report (DOCX)</strong></a>
 
 ---
 
