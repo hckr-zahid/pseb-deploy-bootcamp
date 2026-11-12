@@ -293,10 +293,16 @@ The repository is organized by individual training sessions. Each session has it
       <td><a href="s08-client-side/README.md">View Session</a></td>
     </tr>
     <tr>
-      <td>S09</td>
+      <td>S09 (Day 5)</td>
       <td>Web Application Pentesting & Reconnaissance</td>
       <td><strong>Completed</strong></td>
       <td><a href="s09-web-pentest/README.md">View Session</a></td>
+    </tr>
+    <tr>
+      <td>S09 (Day 6)</td>
+      <td>Recon Workflow and File Upload Exploitation</td>
+      <td><strong>Completed</strong></td>
+      <td><a href="s09-recon-and-upload/README.md">View Session</a></td>
     </tr>
     <tr>
       <td>S10 onwards</td>
