@@ -44,6 +44,10 @@ The following 17 visual evidence captures document every operational phase condu
 | **Figure 4.2** | `15_upload_high_rejection.png` | Upload: High Rejection | Server rejecting `.php` extension regardless of manipulated MIME type. |
 | **Figure 4.3** | `16_upload_high_polyglot_creation.png` | Upload: High Polyglot | Construction and validation of dual-format JPEG polyglot using `convert`, `printf`, `file`, and `identify`. |
 | **Figure 4.4** | `17_upload_high_polyglot_success.png` | Upload: High Success | Server content check accepting valid JPEG structure: `../../hackable/uploads/small.jpg succesfully uploaded!`. |
+| **Figure 5.1** | `18_dvwa_security_impossible.png` | Upload: Impossible Setup | DVWA security level updated to **Impossible**. |
+| **Figure 5.2** | `19_upload_impossible_rejection.png` | Upload: Impossible Rejection | Pre-validation rejection: "Your image was not uploaded. We can only accept JPEG or PNG images." |
+| **Figure 5.3** | `20_upload_impossible_randomized_success.png` | Upload: Impossible Success | Upload accepted under randomized MD5 filename (`894bf6086ad2640e601101f30bcd0e78.jpg`). |
+| **Figure 5.4** | `21_upload_impossible_source_code.jpg` | Upload: Impossible Code Review | Full source code inspection of `impossible.php` via DVWA View Source modal. |
 
 ---
 
@@ -410,6 +414,26 @@ generateSessionToken();
 2. **Cryptographic Filename Randomization (`md5(uniqid() . $uploaded_name)`):** The original user-supplied filename is completely discarded. Storing files under a randomized hash prevents path traversal attacks (`../../`) and prevents an attacker from predicting or directly requesting an uploaded file by its original name.
 3. **Image Re-Encoding via GD (`imagecreatefromjpeg` / `imagejpeg`):** This is the definitive defense against polyglot files. Rather than copying the raw bytes supplied by the user, the server reads the image data into memory pixel-by-pixel and re-renders a brand new image file to disk. **Any script instructions, comments, or binary payloads appended to the original image are permanently stripped and destroyed**.
 4. **Execution Denial in the Upload Directory (`.htaccess` / VirtualHost):** Even if an attacker somehow bypassed the previous three checks, placing a `.htaccess` file inside the upload directory with `php_flag engine off` or configuring the web server with `Options -ExecCGI` guarantees that Apache will **never execute scripts** within that folder under any circumstances.
+
+#### C. Empirical Verification on Impossible Level
+1. **Security Configuration:** DVWA Security was configured to **Impossible** (Figure 5.1).
+2. **Rejection of Unvalidated Scripts:** Direct upload of unapproved extensions or invalid files triggered immediate rejection: `Your image was not uploaded. We can only accept JPEG or PNG images.` (Figure 5.2).
+3. **Randomized File Storage & GD Re-encoding:** Uploading the polyglot file (`small.jpg`) resulted in successful storage, but the server assigned a randomized MD5 identifier: `894bf6086ad2640e601101f30bcd0e78.jpg` (Figure 5.3). During this process, `imagecreatefromjpeg()` and `imagejpeg()` re-rendered the raw pixel buffer, permanently stripping the appended PHP code.
+4. **Source Code Audit:** Clicking the "View Source" button displayed the full implementation of `impossible.php` (Figure 5.4), verifying the multi-condition pre-validation, GD re-encoding, and anti-CSRF token handling.
+
+#### D. Evidence Captures
+
+![Figure 5.1: DVWA Security Impossible](evidence/18_dvwa_security_impossible.png)
+*Figure 5.1: DVWA configuration updated to Impossible security level.*
+
+![Figure 5.2: Impossible Upload Rejection](evidence/19_upload_impossible_rejection.png)
+*Figure 5.2: Server rejecting invalid file types with strict extension and MIME enforcement.*
+
+![Figure 5.3: Randomized File Upload Success](evidence/20_upload_impossible_randomized_success.png)
+*Figure 5.3: Server accepting image under a randomized MD5 filename after pixel re-encoding.*
+
+![Figure 5.4: Impossible Source Code Review](evidence/21_upload_impossible_source_code.jpg)
+*Figure 5.4: DVWA View Source window displaying the secure reference implementation in impossible.php.*
 
 ---
 

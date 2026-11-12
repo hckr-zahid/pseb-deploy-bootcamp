@@ -226,14 +226,14 @@ def build_docx():
     add_body_p(doc, "Among web application vulnerabilities, Unrestricted File Upload (CWE-434 / OWASP A04:2021) represents one of the most critical risks to organizational infrastructure. When an application accepts external user files and places them directly into a publicly accessible web directory without validating content, normalizing extensions, and denying script execution, an attacker can achieve instantaneous remote command execution (RCE) at the privilege level of the web server daemon.")
     add_body_p(doc, "This assessment report documents the complete fulfillment of the Day 6 Bootcamp requirements against Metasploitable 2 (10.50.20.30):")
     add_body_p(doc, "1. Task 1 (35%): A customized ten-step reconnaissance workflow detailing the investigative question, primary/secondary tooling, output artifacts, and defensible stopping conditions for each stage, complete with technical justification for tooling choices.", bold_prefix="• ")
-    add_body_p(doc, "2. Task 2 (40%): A full technical walkthrough of the DVWA File Upload module across all four security tiers (Low, Medium, High, and Impossible), supported by 17 visual evidence captures and in-depth defensive source code analysis.", bold_prefix="• ")
+    add_body_p(doc, "2. Task 2 (40%): A full technical walkthrough of the DVWA File Upload module across all four security tiers (Low, Medium, High, and Impossible), supported by 21 visual evidence captures and in-depth defensive source code analysis.", bold_prefix="• ")
     add_body_p(doc, "3. Task 3 (25%): An executive remediation brief written specifically for senior non-technical leadership, articulating business risk, operational impact, and mandatory architectural controls without relying on technical jargon (strictly omitting the words 'payload' and 'shell').", bold_prefix="• ")
 
     # Evidence Inventory Table
     add_header_paragraph(doc, "Evidence Inventory", level=1)
-    add_body_p(doc, "The following 17 visual evidence captures document every operational milestone executed across the isolated lab infrastructure:")
+    add_body_p(doc, "The following 21 visual evidence captures document every operational milestone executed across the isolated lab infrastructure:")
     
-    ev_table = doc.add_table(rows=18, cols=4)
+    ev_table = doc.add_table(rows=22, cols=4)
     ev_table.alignment = WD_TABLE_ALIGNMENT.CENTER
     set_table_borders(ev_table, color="CBD5E1")
     
@@ -267,7 +267,11 @@ def build_docx():
         ("Figure 4.1", "14_dvwa_security_high.png", "Upload High", "DVWA security level configuration updated to High."),
         ("Figure 4.2", "15_upload_high_rejection.png", "Upload High", "Server rejecting .php extension regardless of client-supplied MIME tampering."),
         ("Figure 4.3", "16_upload_high_polyglot_creation.png", "Upload High", "Dual-format JPEG polyglot generation on Kali using convert, printf, file, identify."),
-        ("Figure 4.4", "17_upload_high_polyglot_success.png", "Upload High", "High-level filter bypassed: small.jpg accepted by getimagesize() check.")
+        ("Figure 4.4", "17_upload_high_polyglot_success.png", "Upload High", "High-level filter bypassed: small.jpg accepted by getimagesize() check."),
+        ("Figure 5.1", "18_dvwa_security_impossible.png", "Upload Impossible", "DVWA security level configuration updated to Impossible."),
+        ("Figure 5.2", "19_upload_impossible_rejection.png", "Upload Impossible", "Server rejecting invalid file types with strict extension and MIME enforcement."),
+        ("Figure 5.3", "20_upload_impossible_randomized_success.png", "Upload Impossible", "Server accepting image under a randomized MD5 filename after pixel re-encoding."),
+        ("Figure 5.4", "21_upload_impossible_source_code.jpg", "Upload Impossible", "DVWA View Source window displaying the secure reference implementation in impossible.php.")
     ]
     
     for r_idx, row in enumerate(evidence_rows, start=1):
@@ -415,6 +419,17 @@ if( ( strtolower( $uploaded_ext ) == 'jpg' || strtolower( $uploaded_ext ) == 'jp
     imagedestroy( $img );
     rename( $temp_file, ( $target_path . $target_file ) );
 }""")
+
+    add_header_paragraph(doc, "Empirical Verification on Impossible Level", level=3)
+    add_body_p(doc, "1. Security Configuration: DVWA Security was configured to Impossible (Figure 5.1).", bold_prefix="• ")
+    add_body_p(doc, "2. Pre-Validation Rejection: Attempting to upload invalid files or direct scripts triggers immediate rejection: 'Your image was not uploaded. We can only accept JPEG or PNG images.' (Figure 5.2).", bold_prefix="• ")
+    add_body_p(doc, "3. Randomized MD5 Storage & GD Re-Encoding: Uploading the polyglot image succeeds, but the server assigns an unpredictable MD5 hash (894bf6086ad2640e601101f30bcd0e78.jpg) and re-draws the image using imagecreatefromjpeg() and imagejpeg(), destroying all appended instructions (Figure 5.3).", bold_prefix="• ")
+    add_body_p(doc, "4. Source Code Verification: Clicking 'View Source' discloses the complete defensive implementation in impossible.php (Figure 5.4).", bold_prefix="• ")
+
+    add_image_evidence(doc, "18_dvwa_security_impossible.png", "Figure 5.1: DVWA security configuration updated to Impossible.")
+    add_image_evidence(doc, "19_upload_impossible_rejection.png", "Figure 5.2: Server rejecting invalid file types with strict extension and MIME enforcement.")
+    add_image_evidence(doc, "20_upload_impossible_randomized_success.png", "Figure 5.3: Server accepting image under a randomized MD5 filename after pixel re-encoding.")
+    add_image_evidence(doc, "21_upload_impossible_source_code.jpg", "Figure 5.4: DVWA View Source window displaying the secure reference implementation in impossible.php.", width_in=5.8)
 
     doc.add_page_break()
 
