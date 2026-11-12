@@ -1,0 +1,5 @@
+# Ignore generated scripts and office documents in s09-recon-and-upload
+s09-recon-and-upload/*.docx
+s09-recon-and-upload/generate_*.py
+s09-recon-and-upload/__pycache__/
+*.pyc
